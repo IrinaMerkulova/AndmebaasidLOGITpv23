@@ -46,5 +46,46 @@ SELECT * FROM inimene;
 DELETE FROM inimene
 WHERE inimeneID=3;
 
+--tabel elukoht
+CREATE TABLE elukoht(
+elukohtID int PRIMARY KEY identity(1,1),
+elukoht varchar(50) UNIQUE,
+maakond varchar(50)
+);
+SELECT * FROM elukoht;
+--andmete lisamine tabeli elukoht
+INSERT INTO elukoht(elukoht, maakond)
+VALUES ('Tartu', 'Tartumaa'),
+('Pärnu', 'Pärnumaa');
+
+--tabeli muutmine uue veergu lisamine
+ALTER TABLE inimene ADD elukohtID int;
+SElect * from inimene;
+-- foreign key lisamine
+Alter table inimene 
+ADD Constraint fk_elukoht
+FOREIGN KEY (elukohtID) 
+references elukoht(elukohtID);
+
+SElect * from inimene;
+Select * from elukoht;
+
+INSERT INTO inimene
+(nimi, synniaeg, telefon, pikkus, opilaskodu, elukohtID)
+VALUES
+('Peeter Vana', '2021-12-30', '2568952' , 90.5 , 0 , 1);
+
+SElect * from inimene join elukoht
+ON inimene.elukohtID=elukoht.elukohtID;
+
+SElect inimene.nimi, inimene.synniaeg, elukoht.elukoht
+from inimene join elukoht
+ON inimene.elukohtID=elukoht.elukohtID;
+
+SElect i.nimi, i.synniaeg, e.elukoht
+from inimene i join elukoht e
+ON i.elukohtID=e.elukohtID;
+
+
 
 
