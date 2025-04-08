@@ -10,9 +10,9 @@ CREATE DATABASE merkulovaLOGITpv23;
 USE merkulovaLOGITpv23;
 
 --tabeli loomine
---identity(1,1) - ise täidab tabeli 1,2,3,...
+--AUTO_INCREMENT - ise täidab tabeli 1,2,3,...
 CREATE TABLE inimene(
-inimeneID int Primary Key identity(1,1),
+inimeneID int Primary Key AUTO_INCREMENT,
 nimi varchar(50) unique,
 synniaeg date,
 telefon char(12),
@@ -48,7 +48,7 @@ WHERE inimeneID=3;
 
 --tabel elukoht
 CREATE TABLE elukoht(
-elukohtID int PRIMARY KEY identity(1,1),
+elukohtID int PRIMARY KEY Auto_increment,
 elukoht varchar(50) UNIQUE,
 maakond varchar(50)
 );
